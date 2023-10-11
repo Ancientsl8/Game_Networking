@@ -37,10 +37,12 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // checks using a laser to determine if player is on the ground.
         grounded = Physics.Raycast(groundCheck.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
 
         InputAxi();
         SpeedControl();
+        // Checks if player is grounded to drag
         if (grounded)
         {
             rb.drag = groundDrag;
@@ -49,7 +51,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.drag = 0;
         }
-
+        // When to jump
         if (Input.GetKey(KeyCode.Space) && readyToJump && grounded)
         {
             readyToJump = false;
@@ -67,12 +69,14 @@ public class PlayerController : MonoBehaviour
         MovePlayer();
     }
 
+    //Gets inputs from player to determine direction
     private void InputAxi()
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
     }
 
+    // Checks player direction + moves player in that direction
     private void MovePlayer()
     {
         moveDir = orientation.forward * verticalInput + orientation.right * horizontalInput;
@@ -87,7 +91,7 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(moveDir.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
         }
     }
-
+    // Limits speed to keep it consistent (can't be my work schedule)
     private void SpeedControl()
     {
         Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.y);
@@ -105,6 +109,8 @@ public class PlayerController : MonoBehaviour
 
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
     }
+
+    //resets jump check after jump
     private void ResetJump()
     {
         readyToJump = true;
