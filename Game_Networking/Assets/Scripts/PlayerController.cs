@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
 
         InputAxi();
         SpeedControl();
-        // Checks if player is grounded to drag
+        /*// Checks if player is grounded to drag
         if (grounded)
         {
             rb.drag = groundDrag;
@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             rb.drag = 0;
-        }
+        }*/
         // When to jump
         if (Input.GetKey(KeyCode.Space) && readyToJump && grounded)
         {
