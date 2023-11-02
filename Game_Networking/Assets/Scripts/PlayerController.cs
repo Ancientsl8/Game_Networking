@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour
     // Limits speed to keep it consistent (can't be my work schedule)
     private void SpeedControl()
     {
-        Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.y);
+        Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
         if (flatVel.magnitude > moveSpeed)
         {
