@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public enum FanState
 {
@@ -17,16 +19,23 @@ public enum WindState
 public class Fan_Behaviour : MonoBehaviour
 {
     #region Variables
-    [SerializeField] private Rigidbody playerRGBD;
+    
     [SerializeField] private BoxCollider triggerCollider;
     [Header("Enum States")]
     [SerializeField] private FanState fanState;
     [SerializeField] private WindState windState;
     private int randomFanStateChangeTiming;
+    private Rigidbody playerRGBD;
     [Header("Fan to Player Effects")]
     [SerializeField] private float windPower;
     [SerializeField] private float groundDrag; //We should use an inherited variable for groundDrag since it is also on PlayerController.cs, I commented the drag there for now.
     #endregion
+
+    private void Awake()
+    {
+        playerRGBD = FanController.instance.GetPRigidBody();
+    }
+
     private void Start()
     {
         RandomFanStateSwitchTiming();
@@ -54,7 +63,7 @@ public class Fan_Behaviour : MonoBehaviour
     private void RandomFanStateSwitchTiming()
     {
         //To randomize the timing of fan state switch
-        randomFanStateChangeTiming = Random.Range(1, 10);
+        randomFanStateChangeTiming = Random.Range(1, 3);
     }
     private void FanCoroutineHandler()
     {
@@ -82,11 +91,11 @@ public class Fan_Behaviour : MonoBehaviour
         switch (fanState)
         {
             case FanState.On:
-                triggerCollider.enabled = false;
+                //triggerCollider.enabled = false;
                 fanState = FanState.Off;
                 break;
             case FanState.Off:
-                triggerCollider.enabled = true;
+                //triggerCollider.enabled = true;
                 fanState = FanState.On;
                 break;
         }
