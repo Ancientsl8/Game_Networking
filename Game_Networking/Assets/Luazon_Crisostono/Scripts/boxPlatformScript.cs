@@ -26,9 +26,6 @@ public class boxPlatformScript : MonoBehaviour
             timerStart = 0;
             gameObject.SetActive(false);
         }
-
-        Debug.Log(timerStart);
-
     }
 
 
