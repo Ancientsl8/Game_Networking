@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 7187691059759903821}
   - component: {fileID: 961411791403563807}
   - component: {fileID: 2895326280994969021}
-  - component: {fileID: 2783094057651465539}
+  - component: {fileID: 3616043685786948220}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -203,7 +203,7 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!114 &2783094057651465539
+--- !u!114 &3616043685786948220
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -212,15 +212,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1902906527683176683}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efee5ee8ffa612e4ea7adf5f2bea876e, type: 3}
+  m_Script: {fileID: 11500000, guid: ab55bad8cd6a844449cf238018320a05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 7
+  moveSpeed: 10
   groundDrag: 5
   playerHeight: 1
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   jumpForce: 12
   jumpCD: 0.25
   airMultiplier: 0.4
