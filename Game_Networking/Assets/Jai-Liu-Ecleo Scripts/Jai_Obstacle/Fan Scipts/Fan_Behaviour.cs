@@ -30,17 +30,13 @@ public class Fan_Behaviour : MonoBehaviour
     [SerializeField] private float windPower;
     [SerializeField] private float groundDrag; //We should use an inherited variable for groundDrag since it is also on PlayerController.cs, I commented the drag there for now.
     #endregion
-
-    private void Awake()
-    {
-        playerRGBD = FanController.instance.GetPRigidBody();
-    }
-
+    
     private void Start()
     {
         RandomFanStateSwitchTiming();
         Debug.Log(randomFanStateChangeTiming);
         StartCoroutine(FanStateCoroutine(randomFanStateChangeTiming));
+        playerRGBD = FanController.instance.GetPRigidBody();
     }
     private void OnTriggerStay(Collider other)
     {
