@@ -1,21 +1,14 @@
-<<<<<<< Updated upstream
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
-=======
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
->>>>>>> Stashed changes
 
 public enum FanState
 {
     On,
     Off
 }
-<<<<<<< Updated upstream
 public enum WindState
 {
     North,
@@ -71,44 +64,6 @@ public class Fan_Behaviour : MonoBehaviour
     {
         //To randomize the timing of fan state switch
         randomFanStateChangeTiming = Random.Range(1, 3);
-=======
-public class Fan_Behaviour : MonoBehaviour
-{
-    #region Variables
-    [SerializeField] private BoxCollider triggerCollider;
-    [Header("Enum States")]
-    [SerializeField] private FanState fanState;
-    private int randomFanStateChangeTiming;
-    #endregion
-    private void Start()
-    {
-        RandomFanStateChangeTiming();
-        Debug.Log(randomFanStateChangeTiming);
-        StartCoroutine(FanStateChange(randomFanStateChangeTiming));
-    }
-    #region Methods
-    private void RandomFanStateChangeTiming()
-    {
-        //To randomize the timing of fan state switch
-        randomFanStateChangeTiming = Random.Range(1, 10);
-    }
-    private IEnumerator FanStateChange(float countdown)
-    {
-        yield return new WaitForSeconds(countdown);
-        //Swith Fan State from on to off and vice versa
-        switch (fanState)
-        {
-            case FanState.On:
-                triggerCollider.enabled = false;
-                fanState = FanState.Off;
-                break;
-            case FanState.Off:
-                triggerCollider.enabled = true;
-                fanState = FanState.On;
-                break;
-        }
-        FanCoroutineHandler();
->>>>>>> Stashed changes
     }
     private void FanCoroutineHandler()
     {
@@ -116,21 +71,14 @@ public class Fan_Behaviour : MonoBehaviour
         if (triggerCollider.enabled == true)
         {
             Debug.Log("Fan is On");
-<<<<<<< Updated upstream
             RandomFanStateSwitchTiming();
             Debug.Log(randomFanStateChangeTiming);
             StartCoroutine(FanStateCoroutine(randomFanStateChangeTiming));
-=======
-            RandomFanStateChangeTiming();
-            Debug.Log(randomFanStateChangeTiming);
-            StartCoroutine(FanStateChange(randomFanStateChangeTiming));
->>>>>>> Stashed changes
         }
         //Fan is off
         else if (triggerCollider.enabled == false)
         {
             Debug.Log("Fan is Off");
-<<<<<<< Updated upstream
             RandomFanStateSwitchTiming();
             Debug.Log(randomFanStateChangeTiming);
             StartCoroutine(FanStateCoroutine(randomFanStateChangeTiming));
@@ -171,11 +119,6 @@ public class Fan_Behaviour : MonoBehaviour
             case WindState.South:
                 playerRGBD.AddForce(Vector3.back * windPower * Time.deltaTime, ForceMode.VelocityChange);
                 break;
-=======
-            RandomFanStateChangeTiming();
-            Debug.Log(randomFanStateChangeTiming);
-            StartCoroutine(FanStateChange(randomFanStateChangeTiming));
->>>>>>> Stashed changes
         }
     }
     #endregion
